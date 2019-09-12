@@ -54,7 +54,7 @@ public class Customer
         this.outstandingamt = outstandingamt;
         this.phone = phone;
         this.agent = agent;
-        this.orders = this.getOrders();
+//        this.orders = this.getOrders();
     }
 
     public long getCustcode() {

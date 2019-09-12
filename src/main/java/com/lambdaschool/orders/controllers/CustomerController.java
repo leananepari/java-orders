@@ -44,14 +44,15 @@ public class CustomerController
                  produces = {"application/json"})
     public ResponseEntity<?> addNewCustomer(@Valid
                                             @RequestBody
-                                            Customer customer) throws URISyntaxException
+                                            Customer newCustomer) throws URISyntaxException
     {
-        customer = customerService.save(customer);
+        newCustomer = customerService.save(newCustomer);
 
         // set the location header for the newly created resource
         HttpHeaders responseHeaders = new HttpHeaders();
-        URI newRestaurantURI = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(customer.getCustcode()).toUri();
-        responseHeaders.setLocation(newRestaurantURI);
+        URI newCustomerURI = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newCustomer.getCustcode()).toUri();
+        System.out.println("URI" + newCustomerURI);
+        responseHeaders.setLocation(newCustomerURI);
 
         return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);
     }
