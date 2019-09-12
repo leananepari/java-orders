@@ -65,17 +65,29 @@ public class SeedData implements CommandLineRunner {
         Customer c25 = new Customer("Sundariya", "Chennai", "Chennai", "India", "3", 7000.00, 11000.00, 7000.00, 11000.00, "PPHGRTS", a10);
 
         Order o01 = new Order(1000.00, 600.00, c13, "SOD");
+        c13.getOrders().add(o01);
         Order o02 = new Order(3000.00, 500.00, c19, "SOD");
+        c19.getOrders().add(o02);
         Order o03 = new Order(4500.00, 900.00, c07, "SOD");
+        c07.getOrders().add(o03);
         Order o04 = new Order(2000.00, 400.00, c16, "SOD");
+        c16.getOrders().add(o04);
         Order o05 = new Order(4000.00, 600.00, c22, "SOD");
+        c22.getOrders().add(o05);
         Order o06 = new Order(2000.00, 300.00, c12, "SOD");
+        c12.getOrders().add(o06);
         Order o07 = new Order(3500.00, 2000.00, c02, "SOD");
+        c02.getOrders().add(o07);
         Order o08 = new Order(2500.00, 400.00, c03, "SOD");
+        c03.getOrders().add(o08);
         Order o09 = new Order(500.00, 100.00, c23, "SOD");
+        c23.getOrders().add(o09);
         Order o10 = new Order(4000.00, 700.00, c07, "SOD");
+        c07.getOrders().add(o10);
         Order o11 = new Order(1500.00, 600.00, c08, "SOD");
+        c08.getOrders().add(o11);
         Order o12 = new Order(2500.00, 400.00, c25, "SOD");
+        c25.getOrders().add(o12);
 
         agentrepos.save(a01);
         agentrepos.save(a02);
