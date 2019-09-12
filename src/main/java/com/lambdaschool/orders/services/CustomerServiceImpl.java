@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,8 +25,15 @@ public class CustomerServiceImpl implements CustomerService
     }
 
     @Override
-    public Customer findCustomerByName(String name) {
-        return null;
+    public Customer findCustomerByName(String name)
+    {
+      Customer customer = custrepos.findByName(name);
+
+      if (customer == null)
+      {
+          throw new EntityNotFoundException("This name doesn't exist: " + name);
+      }
+      return customer;
     }
 
     @Override

@@ -15,7 +15,7 @@ public class Customer
     private long custcode;
 
     @Column(nullable = false)
-    private String custname;
+    private String name;
     private String custcity;
     private String workingarea;
     private String custcountry;
@@ -42,8 +42,8 @@ public class Customer
     {
     }
 
-    public Customer(String custname, String custcity, String workingarea, String custcountry, String grade, double openingamt, double receiveamt, double paymentamt, double outstandingamt, String phone, Agent agent) {
-        this.custname = custname;
+    public Customer(String name, String custcity, String workingarea, String custcountry, String grade, double openingamt, double receiveamt, double paymentamt, double outstandingamt, String phone, Agent agent) {
+        this.name = name;
         this.custcity = custcity;
         this.workingarea = workingarea;
         this.custcountry = custcountry;
@@ -65,12 +65,12 @@ public class Customer
         this.custcode = custcode;
     }
 
-    public String getCustname() {
-        return custname;
+    public String getName() {
+        return name;
     }
 
-    public void setCustname(String custname) {
-        this.custname = custname;
+    public void setName(String custname) {
+        this.name = custname;
     }
 
     public String getCustcity() {
