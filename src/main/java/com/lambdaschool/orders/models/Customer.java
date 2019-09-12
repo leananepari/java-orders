@@ -12,7 +12,7 @@ public class Customer
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long custcode;
+    private long id;
 
     @Column(nullable = false)
     private String name;
@@ -58,11 +58,11 @@ public class Customer
     }
 
     public long getCustcode() {
-        return custcode;
+        return id;
     }
 
     public void setCustcode(long custcode) {
-        this.custcode = custcode;
+        this.id = custcode;
     }
 
     public String getName() {

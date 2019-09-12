@@ -38,22 +38,46 @@ public class CustomerController
         return new ResponseEntity<>(c, HttpStatus.OK);
     }
 
-    // http://localhost:2018/data/customer/new
-    @PostMapping(value = "data/customer/new",
+    // http://localhost:2018/data/customers/new
+    @PostMapping(value = "/data/customers/new",
+                 consumes = {"application/json"},
                  produces = {"application/json"})
     public ResponseEntity<?> addNewCustomer(@Valid
                                             @RequestBody
-                                            Customer newCustomer)
-        throws URISyntaxException
+                                            Customer customer) throws URISyntaxException
     {
-        newCustomer = customerService.save(newCustomer);
+        customer = customerService.save(customer);
 
         // set the location header for the newly created resource
         HttpHeaders responseHeaders = new HttpHeaders();
-        URI newRestaurantURI = ServletUriComponentsBuilder.fromCurrentRequest().path("/{custcode}").buildAndExpand(newCustomer.getCustcode()).toUri();
+        URI newRestaurantURI = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(customer.getCustcode()).toUri();
         responseHeaders.setLocation(newRestaurantURI);
 
         return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);
+    }
+
+    // PUT http://localhost:2018/data/customer/update/{id}
+    @PutMapping(value = "/data/customer/update/{id}",
+            produces = {"application/json"},
+            consumes = {"application/json"})
+    public ResponseEntity<?> updateRestaurant(
+            @RequestBody
+                    Customer updateCustomer,
+            @PathVariable
+                    long id)
+    {
+        customerService.update(updateCustomer, id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    // DELETE http://localhost:2018/data/customer/delete/{id}
+    @DeleteMapping(value = "/data/customer/delete/{id}")
+    public ResponseEntity<?> deleteRestaurantById(
+            @PathVariable
+                    long id)
+    {
+        customerService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }
